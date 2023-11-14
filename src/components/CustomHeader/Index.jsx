@@ -1,17 +1,18 @@
 import React from 'react';
 import {Button, Flex, Select, Space, Switch} from "antd";
 import {CheckOutlined, CloseOutlined, CopyOutlined, FileDoneOutlined} from "@ant-design/icons";
+import PropTypes from "prop-types";
 
-function CustomHeader() {
+const handleChange = () => {
+    console.log("handleChange")
+}
 
-    const handleChange = () => {
-        console.log("handleChange")
-    }
+const CustomHeader = (props) => {
 
     return (
         <Flex className="full_parent" gap="middle" justify={"space-between"} align="center" vertical={false}>
             <Space>
-                <CopyOutlined />
+                <CopyOutlined/>
                 <Space>
                     有效期：
                     <Select
@@ -45,20 +46,26 @@ function CustomHeader() {
                 <Space>
                     密码：
                     <Switch
-                        checkedChildren={<CheckOutlined />}
-                        unCheckedChildren={<CloseOutlined />}
+                        checkedChildren={<CheckOutlined/>}
+                        unCheckedChildren={<CloseOutlined/>}
                         defaultChecked
                         size="small"
                     />
                 </Space>
             </Space>
             <Space>
-                <Button type="primary" icon={<FileDoneOutlined />}>
+                <Button type="primary"
+                        onClick={props.clickSaveButton}
+                        icon={<FileDoneOutlined/>}>
                     保存
                 </Button>
             </Space>
         </Flex>
     );
 }
+
+CustomHeader.propTypes = {
+    clickSaveButton: PropTypes.func
+};
 
 export default CustomHeader;

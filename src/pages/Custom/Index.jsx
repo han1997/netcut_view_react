@@ -1,5 +1,4 @@
-import React from 'react';
-import HomeBody from "../../components/HomeBody/Index.jsx";
+import React, {useState} from 'react';
 import CustomFooter from "../../components/CustomFooter/Index.jsx";
 import {Layout} from "antd";
 import {Content, Footer, Header} from "antd/es/layout/layout.js";
@@ -7,14 +6,18 @@ import CustomHeader from "../../components/CustomHeader/Index.jsx";
 import CustomBody from "../../components/CustomBody/Index.jsx";
 
 function Custom() {
+    const [clickCount, setClickCount] = useState(0)
+    const clickSaveButton = () => {
+        setClickCount(clickCount + 1)
+    }
     return (
         <>
             <Layout className='full_screen'>
                 <Header style={{color: '#fff', backgroundColor: '#7dbcea'}}>
-                    <CustomHeader/>
+                    <CustomHeader clickSaveButton={clickSaveButton}/>
                 </Header>
                 <Content>
-                    <CustomBody />
+                    <CustomBody clickCount={clickCount}/>
                 </Content>
                 <Footer>
                     <CustomFooter/>
