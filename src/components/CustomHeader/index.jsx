@@ -1,6 +1,6 @@
 import React from 'react';
-import {Button, Flex, Select, Space, Switch} from "antd";
-import {CheckOutlined, CloseOutlined, CopyOutlined, FileDoneOutlined} from "@ant-design/icons";
+import {Button, Flex, Select, Space} from "antd";
+import {CopyOutlined, FileDoneOutlined, KeyOutlined} from "@ant-design/icons";
 import PubSub from 'pubsub-js'
 import PropTypes from "prop-types";
 
@@ -19,12 +19,17 @@ const options = [
 
 const CustomHeader = (props) => {
     // 过期时间
-    const {timeout, updateTimeout} = props;
+    const {timeout, updateCutInfoParam} = props;
+    const size = 'small'
 
     // 处理有效期修改
     const handleChange = (e) => {
         setTimeout(e)
-        updateTimeout(e)
+        updateCutInfoParam("timeout", e)
+    }
+
+    const handlePasswd = () => {
+        PubSub.publish("showPasswdInput")
     }
 
 
@@ -48,17 +53,16 @@ const CustomHeader = (props) => {
                         }}
                         onChange={handleChange}
                         options={options}
-                        size="small"
+                        size={size}
                     />
                 </Space>
                 <Space>
                     密码：
-                    <Switch
-                        checkedChildren={<CheckOutlined/>}
-                        unCheckedChildren={<CloseOutlined/>}
-                        defaultChecked
-                        size="small"
-                    />
+                    <Button type="primary" shape="round"
+                            onClick={handlePasswd}
+                            icon={<KeyOutlined/>}
+                            size={size}/>
+
                 </Space>
             </Space>
             <Space>
@@ -74,7 +78,7 @@ const CustomHeader = (props) => {
 
 CustomHeader.propTypes = {
     timeout: PropTypes.number,
-    updateTimeout: PropTypes.func
+    updateCutInfoParam: PropTypes.func,
 };
 
 export default CustomHeader;

@@ -1,8 +1,8 @@
 import React from 'react'
 import {Layout} from 'antd';
-import HomeHeader from '../../components/HomeHeader/Index';
-import CustomFooter from '../../components/CustomFooter/Index';
-import HomeBody from "../../components/HomeBody/Index.jsx";
+import HomeHeader from '../../components/HomeHeader/index.jsx';
+import CustomFooter from '../../components/CustomFooter/index.jsx';
+import HomeBody from "../../components/HomeBody/index.jsx";
 
 const {Header, Footer, Content} = Layout;
 

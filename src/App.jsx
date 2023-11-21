@@ -1,7 +1,7 @@
 import './App.css'
 import Home from './pages/Home'
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Custom from "./pages/Custom/Index.jsx";
+import Custom from "./pages/Custom/index.jsx";
 
 function App() {
 
